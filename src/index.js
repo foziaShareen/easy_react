@@ -1,34 +1,56 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-function StudentInfo(student){
-  return(
-<div className="styleclass">
-  <p>
-    <label>
+       import React,{Component} from 'react';
+       import ReactDOM from 'react-dom';
+       import './index.css';
+       class Programmers extends Component{
+           render(){
+               return(
+                   <div className="styleclass">
+                       <h2>Details of Programmers</h2>
+                       <p>
+                           <label>
+                               Programmer Name:{this.props.Name}
+                           </label>
+                       </p>
+                       <p>
+                           <label>
+                               Programmer Country:{this.props.Country}
+                           </label>
+                       </p>
+                       <p>
+                           <label>
+                               Programmer Projects:{this.props.Projects}
+                           </label>
+                       </p>
+                       <Projects Project Name={this.props.Name} Projects Language={this.props.Language}/>
+                   </div>
+               )
+           }
+       }
+       class Projects extends Component{
+        render(){
+            return(
+                <div className="styleclass">
+                    <h2>Details of Projects</h2>
+                    <p>
+                        <label>
+                            Project Name:{this.props.Name}
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            Project Language:{this.props.Language}
+                        </label>
+                    </p>
+                   
+                </div>
+            )
 
-      student Roll_No:{student.Roll_No}
-      
-    </label>
-  </p>
-  <p>
-    <label>
+        }
+    }
+    const element=(
+        <Programmers Name="tufail" Country="Pakistan" Language="React"
+        Project Name="Website" Project Language="React"/>
 
-      student Roll_No:{student.Name}
-      
-    </label>
-  </p>
-  <p>
-    <label>
 
-      student Roll_No:{student.Class}
-      
-    </label>
-  </p>
-</div>)
-}
-const element =<StudentInfo Roll_No="1" Name="Mansoor" Class="final"/>
- 
-
-ReactDOM.render(element,document.getElementById('root'))
-
+    )
+    ReactDOM.render(element,document.getElementById('root'))
