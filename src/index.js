@@ -1,56 +1,19 @@
-       import React,{Component} from 'react';
-       import ReactDOM from 'react-dom';
-       import './index.css';
-       class Programmers extends Component{
-           render(){
-               return(
-                   <div className="styleclass">
-                       <h2>Details of Programmers</h2>
-                       <p>
-                           <label>
-                               Programmer Name:{this.props.Name}
-                           </label>
-                       </p>
-                       <p>
-                           <label>
-                               Programmer Country:{this.props.Country}
-                           </label>
-                       </p>
-                       <p>
-                           <label>
-                               Programmer Projects:{this.props.Projects}
-                           </label>
-                       </p>
-                       <Projects Project Name={this.props.Name} Projects Language={this.props.Language}/>
-                   </div>
-               )
-           }
-       }
-       class Projects extends Component{
-        render(){
-            return(
-                <div className="styleclass">
-                    <h2>Details of Projects</h2>
-                    <p>
-                        <label>
-                            Project Name:{this.props.Name}
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            Project Language:{this.props.Language}
-                        </label>
-                    </p>
-                   
-                </div>
-            )
-
-        }
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
+class HitTarget extends Component{
+   state={ counter:0};
+    hit=()=>{
+        this.setState({counter:this.state.counter+1})
     }
-    const element=(
-        <Programmers Name="tufail" Country="Pakistan" Language="React"
-        Project Name="Website" Project Language="React"/>
-
-
-    )
-    ReactDOM.render(element,document.getElementById('root'))
+    render(){
+        return(
+        
+            <div>
+                <button onClick={this.hit}>Hit</button>
+                <label>you have hit the target {this.state.counter}times</label>
+            </div>
+        )
+    }
+}
+const element=<HitTarget />
+ReactDOM.render(element,document.getElementById('root'))
