@@ -1,40 +1,58 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-class Message extends Component{
+import './index.css';
+class Employee extends Component{
+    constructor(props){
+        super(props);
+      this.state={
+          upDatedSalary:null
+      } }
+      getUpDatedSalary=(salary)=>{
+          this.setState({upDatedSalary:salary})
+      }
+
+    
+    render(){
+        return(
+            <div className="styleclass">
+                <h1>Employee Details</h1>
+                <label>Employee Name:<b>{this.props.EmployeeName}</b></label>
+                <label>Employee Id:<b>{this.props.EmployeeId}</b></label>
+                <label>Employee TotalSalary:<b>{this.props.EmployeeTotalSalary}</b></label>
+                
+          <Salary BasicSalary={this.props.BasicSalary} Hra={this.props.Hra} Allowance={this.props.Allowance}onSalaryChanged={this.getUpDatedSalary} />
+            </div>
+        )
+    }
+}
+class Salary extends Component{
     constructor(props){
         super(props);
         this.state={
-            message:''
+            hra:this.props.Hra,
+            allowance:this.props.Allowance,
+            basic:this.props.BasicSalary
         }
     }
-    onMessage(text){
-        this.setState({message:"you have entered"+text.length+"number of characters"})
-    }
-    render(){
-        return(
-            <div>
-            <h1>Welcome</h1>
-        <label>Messasge:<input type="text" onChange={e=>this.onMessage(e.target.value)}/></label>
-            <label >{this.state.message}</label>
-            </div>
+    
+upDatedSalary=()=>{
+    let salary=parseInt(this.ref.basic.value)+parseInt(this.ref.hra.value)+parseInt(this.ref.allowance.value);
+    this.props.onSalaryChanged(salary);}
 
-        )
-    }
-}
-class HitTarget extends Component{
-   state={ counter:0};
-    hit=()=>{
-        this.setState({counter:this.state.counter+1})
-    }
+    
     render(){
         return(
-        
-            <div>
-                <button onClick={this.hit}>Hit</button>
-                <label>you have hit the target {this.state.counter}times</label>
+            <div className="styleclass">
+                <h1>Salary Details</h1>
+               <p> <label>Basic :<input type="text" ref="basic" defaultValue={this.state.basic}></input></label></p>
+                <p><label>Hra:<input type="text" ref="hra" defaultValue={this.state.hra}></input></label></p>
+                <p><label>Allowance:<input type="text" ref="allowance" defaultValue={this.state.allowance} ></input></label></p>
+                <button onClick={this.upDatedSalary}>upDate</button>
+
             </div>
         )
     }
 }
-const element=<Message/>
+const element =<Employee EmployeeName="furqan" EmployeeId="12" EmployeeTotalSalary="12000"
+BasicSalary="10000" Hra="3000" Allowance="3000" />
 ReactDOM.render(element,document.getElementById('root'))
