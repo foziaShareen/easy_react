@@ -3,16 +3,18 @@ import Student  from './salary'
 import React ,{useState} from 'react'
 
 function App() {
-  const[data,setData]=useState(null)
-  function getData(val){
-    console.warn(val.target.value)
-    setData(val.target.value)
-  }
+  
+const[status,setStatus]=useState(true)
   return (
     <div >
-      <h1>{data}</h1>
-     <input type="text" onChange={getData} />
-        </div>
+      {
+        status?<h1>welcome</h1>:null
+      }
+      
+
+<button onClick={()=>setStatus(false)}>Hide</button> 
+<button onClick={()=>setStatus(true)}>Show</button> 
+       </div>
   )
 }
 
