@@ -1,23 +1,16 @@
 
 import Student  from './salary'
 import React ,{useState} from 'react'
-import User from './User'
 
 function App() {
-    function getData(){
-    return(
-      
-    alert("hello")
+   const[Data,setData]=useState("shareen");
     
-    )
-    //why we make function and then call from child?
-    // because may be we want to use in many children and it is convenient to define only 
-    // once in parent and call from many child component as we want to be .
-}
+
  return(
    <div>
-    <User data={getData}/>
+    <h1>{Data}</h1>
+    <button onClick={()=>setData("fozia")}>click</button>
    </div>
  )
-}
+ }
 export default App;
