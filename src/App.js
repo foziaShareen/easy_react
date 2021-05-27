@@ -1,37 +1,36 @@
-
 import Student from './salary'
-import React, { useEffect, useState } from 'react';
+import React, { Table } from 'react-bootstrap';
 
 export default function App() {
   const students = [
     {
       name: "sohail",
       email: "s@gmail/com",
-      contact: 82937
-    },
-    {
-      name: "saira",
-      email: "s@gmail/com",
-      contact: 89734
-    },
-    {
-      name: "susan",
-      email: "s@gmail/com",
-      contact: 2897
+      contact: 82937,
+      address:[
+        {
+          hno:"2",
+          city:"wah"
+        }
+      ]
     }
+
+    
   ]
 
   return (
     <div>
 
       <h1>STUDENTS</h1>
-      <table border="1">
-
+      <Table variant="dark" striped>
+<tbody>
         <tr>
           <td>Name</td>
           <td>E-mail</td>
           <td>contact</td>
+          <td>Address</td>
         </tr>
+        
 
         {
           students.map((data) =>
@@ -39,26 +38,20 @@ export default function App() {
               <td>{data.name}</td>
               <td>{data.email}</td>
               <td>{data.contact}</td>
+              <td>{data.address.map((item)=>
+              <tr>
+                <td>{item.hno}</td>
+                <td>{item.city}</td>
+              </tr>
+              )}</td>
             </tr>
           )
         }
-            </table>
+        </tbody>
+            </Table>
 
       
         
      </div>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

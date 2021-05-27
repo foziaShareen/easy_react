@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Salaries from './salary'
-
+import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 ReactDOM.render(
-
-    <App />
-  ,
-  document.getElementById('root')
+  
+    <App />,
+  document.getElementById("root")
 );
-
-
