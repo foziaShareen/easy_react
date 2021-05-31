@@ -1,11 +1,9 @@
 function User(props)
 {
+const data="fozia shareen"
     return(
         <div>
-            {props.item.name}
-            
-            {props.item.email}
-            {props.item.contact}
+          
         </div>
     )
 }

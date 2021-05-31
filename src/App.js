@@ -1,46 +1,39 @@
 
-import React, { Table } from 'react-bootstrap';
-import User from './User';
-
-export default function App() {
-  const students = [
-    {
-      name: "sohail",
-      email: "s@gmail/com",
-      contact: 82937,
-
-    },
-    {
-      name: "rameen",
-      email: "s@gmail/com",
-      contact: 82937,
-
-    },
+import { render } from '@testing-library/react';
+import React, {createRef } from 'react';
+import ReactDOM from 'react-dom';
 
 
-  ]
+class App extends React.Component{
+  constructor(props){
+    super();
+this.inputRef=createRef()
+  }
+  componentDidMount(){
+    console.warn(this.inputRef.current.value="678")
+    
+  }
+  getValue()
+  {
+    console.warn(this.inputRef.current.style.color="red")
 
-  return (
-    <Table variant="dark" >
-      <tbody>
+    console.warn(this.inputRef.current.style.color="red")
+    console.warn(this.inputRef.current.style.backgroundColor="pink")
 
+  }
+  render(){
+    return(
+      <>
 
-        <div>
+              <input type="text" ref={this.inputRef}/>
+              <button onClick={()=>this.getValue()}>click</button>
 
-          <tr>
-            <td>
-            {students.map((data) =>
-
-
-              <User item={data} />
-            )}
-            </td>
-
-          </tr>
-        </div>
-      </tbody>
-       </Table >)
-       
-
-
+      </>
+      
+    )
+  }
 }
+export default App
+  
+
+  
